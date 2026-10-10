@@ -1,0 +1,15 @@
+name: My First CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Hello
+        run: echo "Hello from GitHub Actions!"
+      
+      - name: Check Ubuntu Version
+        run: |
+          uname -a
+          echo "This is an automated test."
