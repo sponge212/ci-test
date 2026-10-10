@@ -1,4 +1,4 @@
-name: My Second CI
+name: Build Docker Image
 
 on: [push]
 
@@ -6,16 +6,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # این دستور کدهای گیت‌هاب شما را روی سرور مجازی دانلود می‌کند
       - name: Get Code from Repo
         uses: actions/checkout@v4
       
-      # حالا که کدها دانلود شدند، لیست فایل‌ها را نشان می‌دهیم
-      - name: List Files
-        run: |
-          echo "These are the files in my repository:"
-          ls -la
+      - name: Build Docker Image
+        run: docker build -t my-web-app:latest .
       
-      # نمایش تاریخ و زمان سرور
-      - name: Print Current Date
-        run: date
+      - name: List Docker Images
+        run: docker images
