@@ -1,4 +1,4 @@
-name: My First CI
+name: My Second CI
 
 on: [push]
 
@@ -6,10 +6,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Print Hello
-        run: echo "Hello from GitHub Actions!"
+      # این دستور کدهای گیت‌هاب شما را روی سرور مجازی دانلود می‌کند
+      - name: Get Code from Repo
+        uses: actions/checkout@v4
       
-      - name: Check Ubuntu Version
+      # حالا که کدها دانلود شدند، لیست فایل‌ها را نشان می‌دهیم
+      - name: List Files
         run: |
-          uname -a
-          echo "This is an automated test."
+          echo "These are the files in my repository:"
+          ls -la
+      
+      # نمایش تاریخ و زمان سرور
+      - name: Print Current Date
+        run: date
